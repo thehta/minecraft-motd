@@ -46,8 +46,6 @@ indefinite_article=$(if [[ "${adjective:0:1 }" =~ (A|E|I|O|U) ]]; then
                     fi)
 motd="$indefinite_article $decoration$adjective World Of Blocks"
 
-echo $motd
-
 # Escape backslashes for final sed replacement
 motd=$(echo $motd | sed 's/\\/\\\\/g')
 
