@@ -30,6 +30,7 @@ codes=(
 colour=$SECTION${codes[ (RANDOM % 15) ]}
 format=$SECTION${codes[ (16 + RANDOM % 5) ]}
 obfuscation=$( ((RANDOM % 10)) && echo "" || echo $SECTION'k')
+reset=$SECTION"r"
 
 decoration=$colour$format$obfuscation
 adjective=$(shuf -n 1 /usr/share/wordnet/data.adj \
@@ -44,7 +45,8 @@ indefinite_article=$(if [[ "${adjective:0:1 }" =~ (A|E|I|O|U) ]]; then
                     else
                         echo "A"
                     fi)
-motd="$indefinite_article $decoration$adjective World Of Blocks"
+
+motd="$indefinite_article $decoration$adjective$reset World Of Blocks"
 
 # Escape backslashes for final sed replacement
 motd=$(echo $motd | sed 's/\\/\\\\/g')
